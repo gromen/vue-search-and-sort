@@ -1,7 +1,7 @@
 <template>
   <b-navbar toggleable="lg" type="dark" variant="dark">
     <b-container fluid="md">
-      <b-navbar-brand href="#">NavBar</b-navbar-brand>
+      <b-navbar-brand href="#">Shopware listing</b-navbar-brand>
 
       <b-navbar-nav class="ml-auto text-white">
         <b-form-select v-model="selected" :options="options"></b-form-select>

@@ -7,9 +7,7 @@ import HeaderMain from './components/HeaderMain.vue'
   <div id="app">
     <HeaderMain />
     <b-container fluid="md">
-      <b-row class="justify-content-md-center">
-        <ProductCards />
-      </b-row>
+      <ProductCards />
     </b-container>
   </div>
 </template>

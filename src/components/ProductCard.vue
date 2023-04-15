@@ -1,5 +1,5 @@
 <template>
-  <div class="item">
+  <b-col col lg="4">
     <h3>
       <slot name="heading"></slot>
     </h3>
@@ -7,7 +7,7 @@
       <slot name="description"></slot>
     </p>
     <div><strong>Cena </strong><slot name="price"></slot></div>
-  </div>
+  </b-col>
 </template>
 
 <style scoped>

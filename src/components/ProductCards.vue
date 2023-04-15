@@ -12,13 +12,16 @@ import { getProducts } from '../api/products.js'
 //   }
 //   value:
 // }
-const count = ref(0)
-let products = ref([])
+
+const products = ref([])
 
 async function getData() {
   const data = await getProducts()
-  console.log(data.data)
-  products.value = data.data.elements.filter((product) => product.name !== '')
+
+  products.value = data.data.elements.filter(
+    (product: { name: string }) => product.name !== null
+  )
+  console.log(products.value)
 }
 
 getData()

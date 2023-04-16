@@ -10,8 +10,8 @@ const productStore = ref({
   setSearch(value) {
     this.searchPhrase = value
   },
-  async sortBy(value) {
-    await productStore.value.getProducts(false, value)
+  sortBy(value) {
+    productStore.value.getProducts(false, value)
   },
   async getProducts(searchPhrase, sorting) {
     this.loading = true

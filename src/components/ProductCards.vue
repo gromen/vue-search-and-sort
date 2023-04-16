@@ -36,13 +36,19 @@ productStore.value.getProducts()
       {{ productStore.error?.code }}
     </b-alert>
 
-    <ProductCard
-      v-for="product in productStore.products"
-      v-bind:key="product.id"
-    >
-      <template #heading> {{ product.name }} </template>
-      <template #description> {{ product.description }} </template>
-      <template #price> {{ product.calculatedPrice.unitPrice }} </template>
-    </ProductCard>
+    <template v-if="productStore.products.length > 0">
+      <ProductCard
+        v-for="product in productStore.products"
+        v-bind:key="product.id"
+      >
+        <template #heading> {{ product.name }} </template>
+        <template #description> {{ product.description }} </template>
+        <template #price> {{ product.calculatedPrice.unitPrice }} </template>
+      </ProductCard>
+    </template>
+    <p class="text-center" v-else-if="!productStore.loading">
+      No products found with phrase
+      <strong>{{ productStore.searchPhrase }}</strong>
+    </p>
   </b-row>
 </template>

@@ -7,8 +7,8 @@ import productStore from '../stores/products'
 
 const options = ref([
   { value: null, text: 'Sortuj' },
-  { value: 'cheapest', text: 'Od najtańszych' },
-  { value: 'expensive', text: 'Od najdroższych' },
+  { value: 'price-asc', text: 'Od najtańszych' },
+  { value: 'price-desc', text: 'Od najdroższych' },
 ])
 </script>
 <template>

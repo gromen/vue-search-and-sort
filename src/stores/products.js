@@ -5,9 +5,10 @@ const productStore = ref({
   selected: null,
   error: null,
   loading: false,
+  searchPhrase: '',
   products: [],
-  setSelected(value) {
-    this.selected = value
+  setSearch(value) {
+    this.searchPhrase = value
   },
   sortBy(value) {
     switch (value) {
@@ -31,10 +32,15 @@ const productStore = ref({
         break
     }
   },
-  async getProducts() {
+  async getProducts(searchPhrase) {
     this.loading = true
+
+    const url = searchPhrase
+      ? `/search?search=${searchPhrase}`
+      : '/product-listing/e435c9763b0d44fcab67ea1c0fdb3fa0'
+
     try {
-      const response = await axiosInstance.post('/product')
+      const response = await axiosInstance.post(url)
 
       this.products = response.data.elements.filter(
         (product) => product.name != null

@@ -10,29 +10,10 @@ const productStore = ref({
   setSearch(value) {
     this.searchPhrase = value
   },
-  sortBy(value) {
-    switch (value) {
-      case 'cheapest':
-        this.products = this.products.sort(
-          (a, b) =>
-            parseFloat(a.calculatedPrice.unitPrice) -
-            parseFloat(b.calculatedPrice.unitPrice)
-        )
-        break
-
-      case 'expensive':
-        this.products = this.products.sort(
-          (a, b) =>
-            parseFloat(b.calculatedPrice.unitPrice) -
-            parseFloat(a.calculatedPrice.unitPrice)
-        )
-        break
-      default:
-        this.products
-        break
-    }
+  async sortBy(value) {
+    await productStore.value.getProducts(false, value)
   },
-  async getProducts(searchPhrase) {
+  async getProducts(searchPhrase, sorting) {
     this.loading = true
 
     const url = searchPhrase
@@ -40,11 +21,12 @@ const productStore = ref({
       : '/product-listing/e435c9763b0d44fcab67ea1c0fdb3fa0'
 
     try {
-      const response = await axiosInstance.post(url)
-
-      this.products = response.data.elements.filter(
-        (product) => product.name != null
+      const response = await axiosInstance.post(
+        url,
+        sorting ? { order: sorting } : null
       )
+
+      this.products = response.data.elements
     } catch (error) {
       this.error = error
       console.error(error)

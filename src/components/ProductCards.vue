@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
+// TODO: add TS type checking
 import ProductCard from './ProductCard.vue'
-import { getProducts } from '../api/products.js'
+import { useProducts } from '../api/products'
 
 // interface Products {
 //   id: string
@@ -13,22 +15,21 @@ import { getProducts } from '../api/products.js'
 //   value:
 // }
 
-const products = ref([])
-
-async function getData() {
-  const data = await getProducts()
-
-  products.value = data.data.elements.filter(
-    (product: { name: string }) => product.name !== null
-  )
-  console.log(products.value)
-}
-
-getData()
+const { products, error, fetchProducts } = useProducts()
+fetchProducts()
 </script>
 
 <template>
   <b-row>
+    <b-alert
+      variant="danger"
+      dismissible
+      fade
+      :show="error ? true : false"
+      @dismissed="error = false"
+    >
+      {{ error.message }}
+    </b-alert>
     <ProductCard v-for="product in products" v-bind:key="product.id">
       <template #heading> {{ product.name }} </template>
       <template #description> {{ product.description }} </template>

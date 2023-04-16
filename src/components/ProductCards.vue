@@ -3,7 +3,7 @@
 // @ts-nocheck
 // TODO: add TS type checking
 import ProductCard from './ProductCard.vue'
-import { useProducts } from '../api/products'
+import productStore from '../stores/products'
 
 // interface Products {
 //   id: string
@@ -14,23 +14,28 @@ import { useProducts } from '../api/products'
 //   }
 //   value:
 // }
-
-const { products, error, fetchProducts } = useProducts()
+const { fetchProducts } = productStore.value.getProducts()
 fetchProducts()
 </script>
 
 <template>
   <b-row>
+    <!-- <b-spinner v-if="loading"></b-spinner> -->
+    <div class="w-100"></div>
     <b-alert
       variant="danger"
       dismissible
       fade
-      :show="error ? true : false"
-      @dismissed="error = false"
+      :show="productStore.error != null"
+      @dismissed="productStore.error = null"
     >
-      {{ error.message }}
+      {{ productStore.error?.message }} <br />
+      {{ productStore.error?.code }}
     </b-alert>
-    <ProductCard v-for="product in products" v-bind:key="product.id">
+    <ProductCard
+      v-for="product in productStore.products"
+      v-bind:key="product.id"
+    >
       <template #heading> {{ product.name }} </template>
       <template #description> {{ product.description }} </template>
       <template #price> {{ product.calculatedPrice.unitPrice }} </template>

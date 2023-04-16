@@ -1,26 +1,27 @@
+<script setup lang="ts">
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
+// TODO add TS type checking
+import { ref } from 'vue'
+import productStore from '../stores/products'
+
+const options = ref([
+  { value: null, text: 'Sortuj' },
+  { value: 'cheapest', text: 'Najtańsze' },
+  { value: 'expensive', text: 'Najdroższe' },
+])
+</script>
 <template>
   <b-navbar toggleable="lg" type="dark" variant="dark">
     <b-container fluid="md">
       <b-navbar-brand href="#">Shopware listing</b-navbar-brand>
-
       <b-navbar-nav class="ml-auto text-white">
-        <b-form-select v-model="selected" :options="options"></b-form-select>
+        <b-form-select
+          @change="productStore.value.sortBy(productStore.value.selected)"
+          v-model="productStore.selected"
+          :options="options"
+        ></b-form-select>
       </b-navbar-nav>
     </b-container>
   </b-navbar>
 </template>
-
-<script lang="ts">
-export default {
-  data() {
-    return {
-      selected: null,
-      options: [
-        { value: null, text: 'Sortuj' },
-        { value: 'a', text: 'Najtańsze' },
-        { value: 'b', text: 'Najdroższe' },
-      ],
-    }
-  },
-}
-</script>

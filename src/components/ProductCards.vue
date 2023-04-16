@@ -14,14 +14,17 @@ import productStore from '../stores/products'
 //   }
 //   value:
 // }
-const { fetchProducts } = productStore.value.getProducts()
-fetchProducts()
+productStore.value.getProducts()
 </script>
 
 <template>
   <b-row>
-    <!-- <b-spinner v-if="loading"></b-spinner> -->
+    <b-col v-if="productStore.loading" class="text-center my-5">
+      <b-spinner style="width: 3rem; height: 3rem"></b-spinner>
+    </b-col>
+
     <div class="w-100"></div>
+
     <b-alert
       variant="danger"
       dismissible
@@ -32,6 +35,7 @@ fetchProducts()
       {{ productStore.error?.message }} <br />
       {{ productStore.error?.code }}
     </b-alert>
+
     <ProductCard
       v-for="product in productStore.products"
       v-bind:key="product.id"

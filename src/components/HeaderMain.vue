@@ -7,8 +7,8 @@ import productStore from '../stores/products'
 
 const options = ref([
   { value: null, text: 'Sortuj' },
-  { value: 'cheapest', text: 'Najtańsze' },
-  { value: 'expensive', text: 'Najdroższe' },
+  { value: 'cheapest', text: 'Od najtańszych' },
+  { value: 'expensive', text: 'Od najdroższych' },
 ])
 </script>
 <template>
@@ -17,7 +17,7 @@ const options = ref([
       <b-navbar-brand href="#">Shopware listing</b-navbar-brand>
       <b-navbar-nav class="ml-auto text-white">
         <b-form-select
-          @change="productStore.value.sortBy(productStore.value.selected)"
+          @change="productStore.sortBy(productStore.selected)"
           v-model="productStore.selected"
           :options="options"
         ></b-form-select>

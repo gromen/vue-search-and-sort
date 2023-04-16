@@ -17,7 +17,7 @@ function onSearch(value) {
 <template>
   <div>
     <b-row class="my-1 justify-content-md-center">
-      <b-col sm="6" class="m-5">
+      <b-col sm="6" class="my-3 m-lg-5">
         <b-form-input
           id="search"
           type="search"

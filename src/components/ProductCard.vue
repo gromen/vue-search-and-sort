@@ -1,5 +1,5 @@
 <template>
-  <b-col col lg="6" xl="4">
+  <b-col sm="12" lg="6" xl="4">
     <b-card border-variant="light">
       <h4>
         <slot name="heading"></slot>

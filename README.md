@@ -1,6 +1,6 @@
 # Search and Sort (VueJS)
 
-##Sort and search using `Vue.js v2.7.x`
+## Sort and search using `Vue.js v2.7.x`
 
 - app implemented using TypeScript Vite/Vue.js template, but I disbled TS temporarily - will be added later
 - state managament implemented using Composition API supported in Vue.js `v2.7.x` (for learning purposes). [More info](https://vuejs.org/guide/scaling-up/state-management.html#simple-state-management-with-reactivity-api)

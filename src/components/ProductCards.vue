@@ -19,7 +19,7 @@ productStore.value.getProducts()
 
 <template>
   <b-row>
-    <b-col v-if="productStore.loading" class="text-center my-5">
+    <b-col lg="12" v-if="productStore.loading" class="text-center my-5">
       <b-spinner style="width: 3rem; height: 3rem"></b-spinner>
     </b-col>
 
@@ -51,7 +51,10 @@ productStore.value.getProducts()
       </b-col>
     </template>
 
-    <p class="text-center" v-else-if="!productStore.loading">
+    <p
+      class="text-center"
+      v-else-if="!productStore.loading && !productStore.error"
+    >
       No products found with phrase
       <strong>{{ productStore.searchPhrase }}</strong>
     </p>

@@ -12,6 +12,10 @@ function onSearch(value) {
     productsStore.value.getProducts()
   }
 }
+
+function onClickClearSearch(): void {
+  productsStore.value.clearSearch()
+}
 </script>
 
 <template>
@@ -23,6 +27,8 @@ function onSearch(value) {
           type="search"
           placeholder="search"
           @input="onSearch"
+          @search="onClickClearSearch"
+          :value="productsStore.searchPhrase"
         ></b-form-input>
       </b-col>
     </b-row>

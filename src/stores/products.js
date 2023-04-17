@@ -1,5 +1,5 @@
 import { reactive } from 'vue'
-import axiosInstance from '../api/axios'
+import axiosInstance from '../api/config/axios'
 
 const productStore = reactive({
   selected: null,

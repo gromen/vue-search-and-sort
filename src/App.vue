@@ -2,6 +2,7 @@
 import ProductCards from './components/ProductCards.vue'
 import HeaderMain from './components/HeaderMain.vue'
 import SearchBar from './components/SearchBar.vue'
+document.title = 'Search and Sort'
 </script>
 
 <template>

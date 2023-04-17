@@ -6,15 +6,15 @@ import productsStore from '../stores/products'
 
 function onSearch(value) {
   if (value.length !== 0) {
-    productsStore.value.getProducts(value)
-    productsStore.value.setSearch(value)
+    productsStore.getProducts(value)
+    productsStore.setSearch(value)
   } else {
-    productsStore.value.getProducts()
+    productsStore.getProducts()
   }
 }
 
 function onClickClearSearch(): void {
-  productsStore.value.clearSearch()
+  productsStore.clearSearch()
 }
 </script>
 

@@ -14,7 +14,7 @@ import productStore from '../stores/products'
 //   }
 //   value:
 // }
-productStore.value.getProducts()
+productStore.getProducts()
 </script>
 
 <template>

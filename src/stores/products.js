@@ -1,7 +1,7 @@
-import { ref } from 'vue'
+import { reactive } from 'vue'
 import axiosInstance from '../api/axios'
 
-const productStore = ref({
+const productStore = reactive({
   selected: null,
   error: null,
   loading: false,
@@ -14,7 +14,7 @@ const productStore = ref({
     this.searchPhrase = ''
   },
   sortBy(value) {
-    productStore.value.getProducts(this.searchPhrase, { order: value })
+    productStore.getProducts(this.searchPhrase, { order: value })
   },
   async getProducts(searchPhrase = false, data = null) {
     const url = searchPhrase

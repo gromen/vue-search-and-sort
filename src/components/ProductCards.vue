@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
-// TODO: add TS type checking
+// TODO: add TS type checking support
 import ProductCard from './ProductCard.vue'
 import productStore from '../stores/products'
 
@@ -23,8 +23,6 @@ productStore.value.getProducts()
       <b-spinner style="width: 3rem; height: 3rem"></b-spinner>
     </b-col>
 
-    <div class="w-100"></div>
-
     <b-alert
       variant="danger"
       dismissible
@@ -37,15 +35,22 @@ productStore.value.getProducts()
     </b-alert>
 
     <template v-if="productStore.products.length > 0">
-      <ProductCard
+      <b-col
+        class="mb-4"
+        sm="12"
+        lg="6"
+        xl="4"
         v-for="product in productStore.products"
         v-bind:key="product.id"
       >
-        <template #heading> {{ product.name }} </template>
-        <template #description> {{ product.description }} </template>
-        <template #price> {{ product.calculatedPrice.unitPrice }} </template>
-      </ProductCard>
+        <ProductCard>
+          <template #heading> {{ product.name }} </template>
+          <template #description> {{ product.description }} </template>
+          <template #price> {{ product.calculatedPrice.unitPrice }} </template>
+        </ProductCard>
+      </b-col>
     </template>
+
     <p class="text-center" v-else-if="!productStore.loading">
       No products found with phrase
       <strong>{{ productStore.searchPhrase }}</strong>

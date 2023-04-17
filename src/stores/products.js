@@ -14,13 +14,13 @@ const productStore = ref({
     productStore.value.getProducts(false, value)
   },
   async getProducts(searchPhrase, sorting) {
-    this.loading = true
-
     const url = searchPhrase
       ? `/search?search=${searchPhrase}`
       : '/product-listing/e435c9763b0d44fcab67ea1c0fdb3fa0'
 
     try {
+      this.loading = true
+
       const response = await axiosInstance.post(
         url,
         sorting ? { order: sorting } : null

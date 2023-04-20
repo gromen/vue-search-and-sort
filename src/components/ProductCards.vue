@@ -50,7 +50,6 @@ productStore.getProducts()
         </ProductCard>
       </b-col>
     </template>
-
     <p
       class="text-center"
       v-else-if="!productStore.loading && !productStore.error"

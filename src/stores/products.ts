@@ -1,9 +1,7 @@
 import type { ProductStoreType } from '../types/products.type'
 import { reactive } from 'vue'
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import axiosInstance from '../api/config/axios'
 import type { AxiosError } from 'axios'
+import { productsGet } from '@/api/config/productsAPI'
 
 const productStore: ProductStoreType = reactive({
   selected: null,
@@ -32,9 +30,9 @@ const productStore: ProductStoreType = reactive({
     try {
       this.products = []
       this.loading = true
-      const response = await axiosInstance.post(url, data)
+      const response = await productsGet(url, data)
 
-      this.products = response.data.elements
+      this.products = response.data?.elements
     } catch (error) {
       this.error = error as AxiosError
       console.error(error)

@@ -7,14 +7,16 @@ export interface ProductStoreType {
   sortBy: (selected: string) => void
   setSearch: (search: string) => void
   clearSearch: () => void
-  products: Element[]
+  products?: Element[]
   loading: boolean
   searchPhrase: string
   selected: string | null
 }
 
 export interface ProductsTypes {
-  elements?: Element[]
+  data?: {
+    elements: Element[]
+  }
 }
 
 export interface Element {

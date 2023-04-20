@@ -22,7 +22,7 @@ productStore.getProducts()
       {{ productStore.error?.code }}
     </b-alert>
 
-    <template v-if="productStore.products.length > 0">
+    <template v-if="productStore.products && productStore.products.length > 0">
       <b-col
         class="mb-4"
         sm="12"

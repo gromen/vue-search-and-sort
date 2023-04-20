@@ -1,20 +1,8 @@
 <script setup lang="ts">
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
-// TODO: add TS type checking support
 import ProductCard from './ProductCard.vue'
 import productStore from '../stores/products'
 
-// interface Products {
-//   id: string
-//   active: boolean
-//   description: string
-//   calculatedPrice: {
-//     unitPrice: number
-//   }
-//   value:
-// }
-productStore.getProducts()
+productStore.getProducts('', null)
 </script>
 
 <template>

@@ -6,6 +6,7 @@ export interface ProductStoreType {
   getProducts: (search: string, data: { order: string } | null) => void
   products: Element[]
   loading: boolean
+  searchPhrase: string
 }
 
 export interface ProductsTypes {
@@ -13,6 +14,7 @@ export interface ProductsTypes {
 }
 
 export interface Element {
+  id: string
   name: null | string
   description: null | string
   calculatedPrice: CalculatedPrice

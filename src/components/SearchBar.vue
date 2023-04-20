@@ -1,10 +1,8 @@
 <script setup lang="ts">
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
 // TODO add TS type checking
 import productsStore from '../stores/products'
 
-function onSearch(value) {
+function onSearch(value: string) {
   if (value.length !== 0) {
     productsStore.getProducts(value)
     productsStore.setSearch(value)

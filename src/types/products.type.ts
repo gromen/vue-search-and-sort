@@ -3,10 +3,14 @@ import type { AxiosError } from 'axios'
 
 export interface ProductStoreType {
   error: null | AxiosError
-  getProducts: (search: string, data: { order: string } | null) => void
+  getProducts: (search?: string, data?: { order: string } | null) => void
+  sortBy: (selected: string) => void
+  setSearch: (search: string) => void
+  clearSearch: () => void
   products: Element[]
   loading: boolean
   searchPhrase: string
+  selected: string | null
 }
 
 export interface ProductsTypes {

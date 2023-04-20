@@ -2,7 +2,7 @@
 import ProductCard from './ProductCard.vue'
 import productStore from '../stores/products'
 
-productStore.getProducts('', null)
+productStore.getProducts()
 </script>
 
 <template>

@@ -23,7 +23,7 @@ function onClickClearSearch(): void {
         <b-form-input
           id="search"
           type="search"
-          placeholder="search"
+          placeholder="search by product name"
           @input="onSearch"
           @search="onClickClearSearch"
           :value="productsStore.searchPhrase"

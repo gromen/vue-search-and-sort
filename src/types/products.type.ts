@@ -1,8 +1,12 @@
 import type { AxiosError } from 'axios'
 
+export interface SortByType {
+  value: 'asc' | 'desc' | ''
+}
+
 export interface ProductStoreType {
   error: null | AxiosError
-  getProducts: (search?: string, data?: { order: string } | null) => void
+  getProducts: (search?: string, sortBy?: SortByType) => void
   sortBy: (selected: string) => void
   setSearch: (search: string) => void
   clearSearch: () => void
@@ -20,11 +24,8 @@ export interface ProductsTypes {
 
 export interface Element {
   id: string
+  image: string
   name: null | string
   description: null | string
-  calculatedPrice: CalculatedPrice
-}
-
-export interface CalculatedPrice {
-  unitPrice: number
+  price: number
 }

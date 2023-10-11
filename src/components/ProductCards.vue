@@ -34,7 +34,7 @@ productStore.getProducts()
         <ProductCard>
           <template #heading> {{ product.name }} </template>
           <template #description> {{ product.description }} </template>
-          <template #price> {{ product.calculatedPrice.unitPrice }} </template>
+          <template #price> {{ product.price }} </template>
         </ProductCard>
       </b-col>
     </template>

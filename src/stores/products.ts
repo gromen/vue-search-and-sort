@@ -1,7 +1,7 @@
-import type { ProductStoreType } from '../types/products.type'
+import type { ProductStoreType, SortByType } from '../types/products.type'
 import { reactive } from 'vue'
 import type { AxiosError } from 'axios'
-import { productsGet } from '@/api/config/productsAPI'
+import axiosInstance from '@/api/config/axios'
 
 const productStore: ProductStoreType = reactive({
   selected: null,
@@ -15,24 +15,28 @@ const productStore: ProductStoreType = reactive({
   clearSearch() {
     this.searchPhrase = ''
   },
-  sortBy(value: string) {
-    productStore.getProducts(this.searchPhrase, { order: value })
+  sortBy(value: SortByType) {
+    productStore.getProducts(this.searchPhrase, value)
   },
   async getProducts(
     this: ProductStoreType,
     searchPhrase = '',
-    data = null
+    sortBy = ''
   ): Promise<void> {
-    const url = searchPhrase
-      ? `/search?search=${searchPhrase}`
-      : '/product-listing/e435c9763b0d44fcab67ea1c0fdb3fa0'
+    let url = `${axiosInstance.defaults.baseURL}${
+      searchPhrase ? `/products?name=${searchPhrase}` : '/products'
+    }`
+
+    if (sortBy) {
+      url = `${url}${searchPhrase ? '&' : '?'}orderby=price&order=${sortBy}`
+    }
 
     try {
       this.products = []
       this.loading = true
-      const response = await productsGet(url, data)
-
-      this.products = response.data?.elements
+      const response = await axiosInstance.get(url)
+      console.log(response.data)
+      this.products = response.data
     } catch (error) {
       this.error = error as AxiosError
       console.error(error)

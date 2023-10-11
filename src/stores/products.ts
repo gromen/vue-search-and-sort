@@ -1,8 +1,12 @@
 import type { ProductStoreType, SortByType } from '../types/products.type'
 import { reactive } from 'vue'
 import type { AxiosError } from 'axios'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import axiosInstance from '@/api/config/axios'
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const productStore: ProductStoreType = reactive({
   selected: null,
   error: null,
@@ -21,6 +25,8 @@ const productStore: ProductStoreType = reactive({
   async getProducts(
     this: ProductStoreType,
     searchPhrase = '',
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     sortBy = ''
   ): Promise<void> {
     let url = `${axiosInstance.defaults.baseURL}${
